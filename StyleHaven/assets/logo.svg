@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" width="720" height="220" role="img" aria-label="Style Haven Salon logo">
+  <defs>
+    <linearGradient id="shRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7A6AE"/>
+      <stop offset="0.5" stop-color="#C9737F"/>
+      <stop offset="1" stop-color="#9E4E5C"/>
+    </linearGradient>
+    <linearGradient id="shGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EBD79A"/>
+      <stop offset="0.55" stop-color="#C9A24B"/>
+      <stop offset="1" stop-color="#9C7A2E"/>
+    </linearGradient>
+    <linearGradient id="shPlum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A3446"/>
+      <stop offset="1" stop-color="#2C1E2B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Emblem -->
+  <g transform="translate(10,10)">
+    <circle cx="100" cy="100" r="98" fill="url(#shPlum)"/>
+    <circle cx="100" cy="100" r="88" fill="none" stroke="url(#shGold)" stroke-width="3"/>
+    <circle cx="100" cy="100" r="80" fill="none" stroke="url(#shRose)" stroke-width="1.4" opacity="0.75"/>
+
+    <!-- Scissors -->
+    <g stroke="url(#shGold)" stroke-width="7" stroke-linecap="round" fill="none">
+      <line x1="70" y1="52" x2="140" y2="118"/>
+      <line x1="130" y1="52" x2="60" y2="118"/>
+    </g>
+    <circle cx="58" cy="128" r="15" fill="none" stroke="url(#shGold)" stroke-width="7"/>
+    <circle cx="142" cy="128" r="15" fill="none" stroke="url(#shGold)" stroke-width="7"/>
+    <circle cx="100" cy="85" r="7" fill="url(#shRose)"/>
+
+    <!-- Sparkle -->
+    <path d="M160 40 l4.5 11.5 11.5 4.5 -11.5 4.5 -4.5 11.5 -4.5 -11.5 -11.5 -4.5 11.5 -4.5 z" fill="url(#shRose)"/>
+    <path d="M44 44 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3 z" fill="url(#shGold)" opacity="0.9"/>
+  </g>
+
+  <!-- Wordmark -->
+  <g transform="translate(228,0)">
+    <text x="0" y="96" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="700" letter-spacing="2" fill="#3B2B3A">STYLE</text>
+    <text x="238" y="96" font-family="Georgia, 'Times New Roman', serif" font-size="62" font-weight="400" font-style="italic" letter-spacing="1" fill="#9E4E5C">Haven</text>
+    <text x="4" y="140" font-family="Verdana, Geneva, sans-serif" font-size="24" letter-spacing="13" fill="#C9A24B">S A L O N</text>
+    <line x1="6" y1="156" x2="330" y2="156" stroke="#C9737F" stroke-width="1.4" opacity="0.6"/>
+    <text x="6" y="182" font-family="Verdana, Geneva, sans-serif" font-size="15" font-style="italic" letter-spacing="1" fill="#6E5A67">Beauty, booked in sync.</text>
+  </g>
+</svg>

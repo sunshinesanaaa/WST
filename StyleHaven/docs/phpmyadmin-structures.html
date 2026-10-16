@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>phpMyAdmin table structures | Style Sync — Style Haven Salon</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+  :root { --plum:#3b2b3a; --rose:#c9737f; --rose-dark:#9e4e5c; --blush:#f7e9e8; --gold:#c9a24b; --line:rgba(59,43,58,0.12); }
+  body { font-family:"Poppins","Segoe UI",Tahoma,sans-serif; background:#f6f0ee; color:#2a2229; margin:0; padding:0 0 3rem; }
+  header.page { background:var(--plum); color:#fff; padding:2.2rem 0; margin-bottom:2rem; }
+  .wrap { max-width:1180px; margin:0 auto; padding:0 1.1rem; }
+  header.page h1 { margin:0 0 .3rem; font-size:1.6rem; }
+  header.page p { margin:0; color:rgba(255,255,255,.78); font-size:.9rem; }
+  .howto { background:#fff; border:1px solid var(--line); border-left:5px solid var(--gold); border-radius:14px; padding:1.1rem 1.3rem; margin-bottom:2rem; font-size:.88rem; }
+  .howto ol { margin:.5rem 0 0; padding-left:1.2rem; }
+  .db-bar { background:#fff; border:1px solid var(--line); border-radius:14px; padding:.9rem 1.2rem; display:flex; flex-wrap:wrap; gap:1rem; align-items:center; font-size:.85rem; margin-bottom:1.6rem; }
+  .db-bar code { background:var(--blush); color:var(--rose-dark); padding:.15rem .45rem; border-radius:6px; }
+  section.table-block { margin-bottom:2.4rem; }
+  .table-title { display:flex; flex-wrap:wrap; align-items:center; gap:.6rem; font-size:1.05rem; font-weight:600; color:var(--plum); margin:0 0 .5rem; }
+  .table-title i { color:var(--rose); }
+  .pill { background:var(--blush); color:var(--rose-dark); border-radius:999px; padding:.16rem .6rem; font-size:.72rem; font-weight:600; }
+  table.grid { width:100%; border-collapse:collapse; background:#fff; font-size:.8rem; border:1px solid var(--line); }
+  table.grid th { background:#efefef; color:#444; text-align:left; font-weight:600; padding:.42rem .6rem; border:1px solid #dcdcdc; white-space:nowrap; }
+  table.grid td { padding:.4rem .6rem; border:1px solid #e6e6e6; vertical-align:top; }
+  table.grid tr:nth-child(even) td { background:#fafafa; }
+  td.num { color:#888; width:2.2rem; text-align:right; }
+  td.type { color:#0a5c8a; }
+  .key { color:var(--gold); font-weight:700; }
+  .null-no { color:#a12c3f; font-weight:600; }
+  .fk { font-size:.78rem; color:#5a4a55; margin:.5rem 0 0; }
+  .fk code { background:var(--blush); padding:.1rem .4rem; border-radius:5px; color:var(--rose-dark); }
+  footer.page { text-align:center; font-size:.8rem; color:#7a6b75; margin-top:2.5rem; }
+  @media print { body { background:#fff; } .howto { border-left-color:#999; } section.table-block { break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<header class="page">
+  <div class="wrap">
+    <h1><i class="bi bi-database"></i> phpMyAdmin table structures</h1>
+    <p>Style Sync — Style Haven Salon · IT 004 Web Systems and Technologies · Project Part 4 · Group 3</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="howto">
+    <strong><i class="bi bi-camera"></i> How to produce the required phpMyAdmin screenshot</strong>
+    <ol>
+      <li>Start <strong>Apache</strong> and <strong>MySQL</strong> in the XAMPP control panel.</li>
+      <li>Open <a href="http://localhost/phpmyadmin" target="_blank" rel="noopener">http://localhost/phpmyadmin</a> and import <code>database/stylehaven.sql</code>.</li>
+      <li>Click the <strong>stylehaven_db</strong> database in the left column, then open the <strong>Structure</strong> tab of any table below.</li>
+      <li>Screenshot the table structure (or the database's table list) and paste it into the documentation.</li>
+    </ol>
+    <p style="margin:.7rem 0 0;">
+      This page is generated from that same SQL file by <code>tests/build-structures.php</code>, so if
+      MySQL is not available on the machine where the documentation is written, this page can be
+      printed or screenshotted instead — it shows exactly the columns, keys and relations that
+      phpMyAdmin will display after the import.
+    </p>
+  </div>
+
+  <div class="db-bar">
+    <span><i class="bi bi-server"></i> Database <code>stylehaven_db</code></span>
+    <span><i class="bi bi-table"></i> 6 tables</span>
+    <span><i class="bi bi-columns-gap"></i> 62 columns</span>
+    <span><i class="bi bi-key"></i> 19 keys</span>
+    <span><i class="bi bi-diagram-3"></i> 3 foreign keys</span>
+    <span><i class="bi bi-download"></i> Charset <code>utf8mb4</code> · Collation <code>utf8mb4_unicode_ci</code></span>
+  </div>
+
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      users      <span class="pill">11 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+              <span class="pill">6 demo rows</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>user_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>username</strong></td>
+            <td class="type">VARCHAR(50)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>password_hash</strong></td>
+            <td class="type">VARCHAR(255)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small>bcrypt hash produced by password_hash()</small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>full_name</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>email</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>contact_no</strong></td>
+            <td class="type">VARCHAR(30)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>role</strong></td>
+            <td class="type">ENUM(&#039;ADMINISTRATOR&#039;,&#039;FRONT DESK&#039;,&#039;STYLIST&#039;,&#039;CUSTOMER&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Customer&#039;</td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>status</strong></td>
+            <td class="type">ENUM(&#039;ACTIVE&#039;,&#039;INACTIVE&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Active&#039;</td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">9</td>
+            <td><strong>last_login</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">10</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">11</td>
+            <td><strong>updated_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>on update CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>user_id</strong></td>
+              <td><em>6</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_users_username</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>username</strong></td>
+              <td><em>6</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_users_email</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>email</strong></td>
+              <td><em>6</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_users_role_status</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>role</strong></td>
+              <td><em>6</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                  <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>status</strong></td>
+              <td></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+      </section>
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      services      <span class="pill">10 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+              <span class="pill">11 demo rows</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>service_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>service_code</strong></td>
+            <td class="type">VARCHAR(20)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>service_name</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>category</strong></td>
+            <td class="type">ENUM(&#039;HAIR&#039;,&#039;NAILS&#039;,&#039;SKIN&#039;,&#039;MAKEUP&#039;,&#039;PACKAGES&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Hair&#039;</td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>price</strong></td>
+            <td class="type">DECIMAL(10,2)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td>0.00</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>duration_min</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td>30</td>
+            <td></td>
+            <td></td>
+            <td><small>service length in minutes</small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>description</strong></td>
+            <td class="type">VARCHAR(255)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>status</strong></td>
+            <td class="type">ENUM(&#039;AVAILABLE&#039;,&#039;UNAVAILABLE&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Available&#039;</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">9</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">10</td>
+            <td><strong>updated_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>on update CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>service_id</strong></td>
+              <td><em>11</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_services_code</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>service_code</strong></td>
+              <td><em>11</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_services_category</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>category</strong></td>
+              <td><em>11</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+      </section>
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      products      <span class="pill">11 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+              <span class="pill">10 demo rows</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>product_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>product_code</strong></td>
+            <td class="type">VARCHAR(20)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>product_name</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>brand</strong></td>
+            <td class="type">VARCHAR(80)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>category</strong></td>
+            <td class="type">ENUM(&#039;HAIR CARE&#039;,&#039;NAIL CARE&#039;,&#039;SKIN CARE&#039;,&#039;MAKEUP&#039;,&#039;TOOLS&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Hair Care&#039;</td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>price</strong></td>
+            <td class="type">DECIMAL(10,2)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td>0.00</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>stock_qty</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>description</strong></td>
+            <td class="type">VARCHAR(255)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">9</td>
+            <td><strong>status</strong></td>
+            <td class="type">ENUM(&#039;ACTIVE&#039;,&#039;INACTIVE&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Active&#039;</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">10</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">11</td>
+            <td><strong>updated_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>on update CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>product_id</strong></td>
+              <td><em>10</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_products_code</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>product_code</strong></td>
+              <td><em>10</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_products_category</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>category</strong></td>
+              <td><em>10</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+      </section>
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      stylists      <span class="pill">9 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+              <span class="pill">5 demo rows</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>stylist_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>stylist_code</strong></td>
+            <td class="type">VARCHAR(20)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>full_name</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>specialization</strong></td>
+            <td class="type">ENUM(&#039;HAIR&#039;,&#039;NAILS&#039;,&#039;SKIN&#039;,&#039;MAKEUP&#039;,&#039;BARBER &amp; GROOMING&#039;,&#039;ALL-AROUND&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Hair&#039;</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>contact_no</strong></td>
+            <td class="type">VARCHAR(30)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>years_experience</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>status</strong></td>
+            <td class="type">ENUM(&#039;AVAILABLE&#039;,&#039;ON LEAVE&#039;,&#039;INACTIVE&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Available&#039;</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">9</td>
+            <td><strong>updated_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>on update CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>stylist_id</strong></td>
+              <td><em>5</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_stylists_code</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>stylist_code</strong></td>
+              <td><em>5</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+      </section>
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      appointments      <span class="pill">13 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+              <span class="pill">5 demo rows</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>appointment_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>ref_no</strong></td>
+            <td class="type">VARCHAR(12)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>UNIQUE</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>customer_name</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>contact_no</strong></td>
+            <td class="type">VARCHAR(30)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>email</strong></td>
+            <td class="type">VARCHAR(120)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>service_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>stylist_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>appt_date</strong></td>
+            <td class="type">DATE</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">9</td>
+            <td><strong>appt_time</strong></td>
+            <td class="type">TIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">10</td>
+            <td><strong>status</strong></td>
+            <td class="type">ENUM(&#039;PENDING&#039;,&#039;CONFIRMED&#039;,&#039;COMPLETED&#039;,&#039;CANCELLED&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>&#039;Pending&#039;</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">11</td>
+            <td><strong>notes</strong></td>
+            <td class="type">VARCHAR(255)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">12</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">13</td>
+            <td><strong>updated_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>on update CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>appointment_id</strong></td>
+              <td><em>5</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>uq_appointments_ref</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>ref_no</strong></td>
+              <td><em>5</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_appointments_slot</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>stylist_id</strong></td>
+              <td><em>5</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                  <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>appt_date</strong></td>
+              <td></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                  <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td><strong>appt_time</strong></td>
+              <td></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_appointments_date</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>appt_date</strong></td>
+              <td><em>5</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_appointments_service</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>service_id</strong></td>
+              <td><em>5</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+          <p class="fk">
+        <i class="bi bi-diagram-3"></i> <strong>Relations:</strong>
+                  <br>
+          <code>fk_appt_service</code>
+          &nbsp;<strong>appointments.service_id</strong>
+          &rarr; <strong>services.service_id</strong>
+          (ON DELETE RESTRICT · ON UPDATE CASCADE)                  <br>
+          <code>fk_appt_stylist</code>
+          &nbsp;<strong>appointments.stylist_id</strong>
+          &rarr; <strong>stylists.stylist_id</strong>
+          (ON DELETE RESTRICT · ON UPDATE CASCADE)              </p>
+      </section>
+  <section class="table-block">
+    <h2 class="table-title">
+      <i class="bi bi-table"></i>
+      activity_log      <span class="pill">8 columns</span>
+      <span class="pill">InnoDB · utf8mb4</span>
+          </h2>
+
+    <table class="grid">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Type</th><th>Collation</th><th>Null</th>
+          <th>Default</th><th>Extra</th><th>Key</th><th>Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+                            <tr>
+            <td class="num">1</td>
+            <td><strong>log_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td>auto_increment</td>
+            <td><span class="key" title="Primary key">PRIMARY</span></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">2</td>
+            <td><strong>user_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">3</td>
+            <td><strong>username</strong></td>
+            <td class="type">VARCHAR(50)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small>kept even if the account is deleted</small></td>
+          </tr>
+                            <tr>
+            <td class="num">4</td>
+            <td><strong>action</strong></td>
+            <td class="type">ENUM(&#039;INSERT&#039;,&#039;UPDATE&#039;,&#039;DELETE&#039;,&#039;LOGIN&#039;,&#039;LOGOUT&#039;)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">5</td>
+            <td><strong>table_name</strong></td>
+            <td class="type">VARCHAR(40)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">6</td>
+            <td><strong>record_id</strong></td>
+            <td class="type">INT(11)</td>
+            <td></td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">7</td>
+            <td><strong>details</strong></td>
+            <td class="type">VARCHAR(255)</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td>Yes</td>
+            <td><em style="color:#999">NULL</em></td>
+            <td></td>
+            <td></td>
+            <td><small></small></td>
+          </tr>
+                            <tr>
+            <td class="num">8</td>
+            <td><strong>created_at</strong></td>
+            <td class="type">DATETIME</td>
+            <td>utf8mb4_unicode_ci</td>
+            <td><span class="null-no">No</span></td>
+            <td>CURRENT_TIMESTAMP</td>
+            <td></td>
+            <td>INDEX</td>
+            <td><small></small></td>
+          </tr>
+              </tbody>
+    </table>
+
+    <h3 class="table-title" style="font-size:.92rem;margin-top:1rem;"><i class="bi bi-key-fill"></i> Indexes</h3>
+    <table class="grid">
+      <thead>
+        <tr><th>Keyname</th><th>Type</th><th>Unique</th><th>Packed</th><th>Column</th><th>Cardinality</th><th>Collation</th><th>Null</th></tr>
+      </thead>
+      <tbody>
+                                          <tr>
+              <td><strong>PRIMARY</strong></td>
+              <td>BTREE</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td><strong>log_id</strong></td>
+              <td><em>0</em></td>
+              <td></td>
+              <td>No</td>
+            </tr>
+                                                    <tr>
+              <td><strong>idx_log_created</strong></td>
+              <td>BTREE</td>
+              <td>No</td>
+              <td>No</td>
+              <td><strong>created_at</strong></td>
+              <td><em>0</em></td>
+              <td>A</td>
+              <td>No</td>
+            </tr>
+                        </tbody>
+    </table>
+
+          <p class="fk">
+        <i class="bi bi-diagram-3"></i> <strong>Relations:</strong>
+                  <br>
+          <code>fk_log_user</code>
+          &nbsp;<strong>activity_log.user_id</strong>
+          &rarr; <strong>users.user_id</strong>
+          (ON DELETE SET NULL · ON UPDATE CASCADE)              </p>
+      </section>
+
+  <footer class="page">
+    Generated from <code>database/stylehaven.sql</code> by <code>tests/build-structures.php</code>.<br>
+    Style Haven Salon · Style Sync · Group 3 — Racasa, Abelo, Abeson, Dichosa, Guariña
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* =====================================================================
+   Style Sync Admin — admin.css
+   Extends css/style.css with the control-panel layout (sidebar + main).
+   Style Haven Salon | IT 004 Web Systems and Technologies | Group 3
+   ===================================================================== */
+
+.admin-body { background: #f6f0ee; }
+
+/* ---------------------------------------------------------------- shell */
+.admin-shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  min-height: calc(100vh - 260px);
+}
+
+/* -------------------------------------------------------------- sidebar */
+.admin-side {
+  flex: 0 0 258px;
+  align-self: stretch;
+  background: var(--sh-plum);
+  color: rgba(255, 255, 255, 0.78);
+  padding: 1.6rem 1rem 1.4rem;
+  position: sticky;
+  top: 76px;
+}
+.admin-side-title {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sh-gold);
+  font-weight: 600;
+  padding: 0 0.8rem 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  margin-bottom: 0.9rem;
+}
+.admin-side-nav { display: flex; flex-direction: column; gap: 0.2rem; }
+.admin-side-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.62rem 0.85rem;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  white-space: nowrap;
+}
+.admin-side-link .bi { font-size: 1.02rem; color: var(--sh-rose); }
+.admin-side-link:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
+.admin-side-link.active {
+  background: linear-gradient(135deg, var(--sh-rose), var(--sh-rose-dark));
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(158, 78, 92, 0.32);
+}
+.admin-side-link.active .bi { color: #fff; }
+.admin-side-foot {
+  margin-top: 1.4rem;
+  padding: 0.9rem 0.85rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.82rem;
+}
+.admin-side-foot strong { color: var(--sh-gold); }
+
+/* ----------------------------------------------------------------- main */
+.admin-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 2rem 2rem 3.2rem;
+}
+.admin-page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+.admin-page-title { font-size: clamp(1.6rem, 2.6vw, 2.15rem); margin: 0; }
+.admin-clock {
+  font-size: 0.82rem;
+  color: var(--sh-muted);
+  background: #fff;
+  border: 1px solid var(--sh-line);
+  border-radius: 999px;
+  padding: 0.42rem 0.95rem;
+  display: inline-block;
+}
+
+/* ---------------------------------------------------------------- cards */
+.admin-card {
+  background: #fff;
+  border: 1px solid var(--sh-line);
+  border-radius: var(--sh-radius);
+  box-shadow: var(--sh-shadow-sm);
+  padding: 1.5rem 1.5rem 1.6rem;
+}
+.admin-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.admin-card-title .bi { color: var(--sh-rose); }
+.admin-card .form-label { font-size: 0.8rem; font-weight: 600; color: var(--sh-plum); }
+.admin-hint { font-size: 0.8rem; color: var(--sh-muted); }
+.required { color: var(--sh-rose); }
+
+/* -------------------------------------------------------------- toolbar */
+.admin-toolbar {
+  background: #fff;
+  border: 1px solid var(--sh-line);
+  border-radius: var(--sh-radius);
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.3rem;
+}
+.admin-toolbar .form-label { font-size: 0.78rem; font-weight: 600; color: var(--sh-plum); margin-bottom: 0.25rem; }
+
+/* --------------------------------------------------------------- tables */
+.admin-table-wrap {
+  background: #fff;
+  border-radius: var(--sh-radius);
+  border: 1px solid var(--sh-line);
+  overflow: hidden;
+}
+.admin-table-wrap .table { margin-bottom: 0; }
+.table-sh tbody td code { color: var(--sh-rose-dark); }
+.admin-actions { white-space: nowrap; }
+.admin-actions .btn { padding: 0.3rem 0.6rem; border-radius: 9px; font-size: 0.82rem; }
+
+/* Inline "edit / delete" form so delete can be a real POST request. */
+.admin-inline { display: inline; }
+
+/* --------------------------------------------------------------- stat tiles */
+.stat-tile {
+  background: #fff;
+  border: 1px solid var(--sh-line);
+  border-radius: var(--sh-radius);
+  padding: 1.25rem 1.3rem;
+  height: 100%;
+}
+.stat-tile .stat-ico {
+  width: 44px; height: 44px; border-radius: 13px;
+  display: grid; place-items: center;
+  background: var(--sh-blush); color: var(--sh-rose-dark); font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.stat-tile .stat-label {
+  font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--sh-muted); font-weight: 600;
+}
+.stat-tile .stat-value { font-family: var(--sh-font-head); font-size: 1.75rem; color: var(--sh-plum); font-weight: 700; line-height: 1.2; }
+
+/* ----------------------------------------------------------------- misc */
+.admin-login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 2.5rem 1rem; }
+.admin-login-card { max-width: 480px; width: 100%; }
+.admin-pill {
+  border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.74rem; font-weight: 600;
+  background: var(--sh-blush); color: var(--sh-rose-dark);
+}
+.table-empty { text-align: center; color: var(--sh-muted); padding: 2.2rem 1rem; }
+.table-empty .bi { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; color: var(--sh-rose); }
+
+.admin-foot {
+  background: var(--sh-plum-deep);
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.8rem;
+  padding: 1.1rem 0;
+}
+.admin-foot .team-tag { color: var(--sh-gold); }
+
+/* ------------------------------------------------------------ responsive */
+@media (max-width: 991.98px) {
+  .admin-shell { flex-direction: column; }
+  .admin-side {
+    position: static;
+    flex: 1 1 auto;
+    width: 100%;
+    padding: 0.9rem 0.8rem;
+  }
+  .admin-side-nav { flex-direction: row; overflow-x: auto; gap: 0.35rem; }
+  .admin-side-link { border: 1px solid rgba(255, 255, 255, 0.18); }
+  .admin-side-title, .admin-side-foot { display: none; }
+  .admin-main { padding: 1.4rem 1rem 2.4rem; }
+}
+
+@media print {
+  .admin-side, .navbar-sh, .topbar, .admin-foot, .admin-toolbar { display: none; }
+}

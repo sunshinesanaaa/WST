@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220" role="img" aria-label="Style Haven Salon emblem">
+  <defs>
+    <linearGradient id="shRose" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7A6AE"/>
+      <stop offset="0.5" stop-color="#C9737F"/>
+      <stop offset="1" stop-color="#9E4E5C"/>
+    </linearGradient>
+    <linearGradient id="shGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#EBD79A"/>
+      <stop offset="0.55" stop-color="#C9A24B"/>
+      <stop offset="1" stop-color="#9C7A2E"/>
+    </linearGradient>
+    <linearGradient id="shPlum" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A3446"/>
+      <stop offset="1" stop-color="#2C1E2B"/>
+    </linearGradient>
+  </defs>
+  <circle cx="110" cy="110" r="108" fill="url(#shPlum)"/>
+  <circle cx="110" cy="110" r="97" fill="none" stroke="url(#shGold)" stroke-width="3.5"/>
+  <circle cx="110" cy="110" r="87" fill="none" stroke="url(#shRose)" stroke-width="1.5" opacity="0.75"/>
+  <g stroke="url(#shGold)" stroke-width="8" stroke-linecap="round" fill="none">
+    <line x1="78" y1="56" x2="152" y2="128"/>
+    <line x1="142" y1="56" x2="68" y2="128"/>
+  </g>
+  <circle cx="66" cy="140" r="16.5" fill="none" stroke="url(#shGold)" stroke-width="8"/>
+  <circle cx="154" cy="140" r="16.5" fill="none" stroke="url(#shGold)" stroke-width="8"/>
+  <circle cx="110" cy="92" r="7.5" fill="url(#shRose)"/>
+  <path d="M176 44 l5 13 13 5 -13 5 -5 13 -5 -13 -13 -5 13 -5 z" fill="url(#shRose)"/>
+  <path d="M48 48 l3.3 8.7 8.7 3.3 -8.7 3.3 -3.3 8.7 -3.3 -8.7 -8.7 -3.3 8.7 -3.3 z" fill="url(#shGold)" opacity="0.9"/>
+</svg>
