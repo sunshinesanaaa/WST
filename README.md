@@ -18,7 +18,7 @@ Bootstrap 5.
 | Address | 24 Aurora Boulevard, Cubao, Quezon City |
 | Contact | (02) 8123 4567 · hello@stylehavensalon.ph |
 | Team | Racasa, Renzo V. (Leader) · Abelo, Joachim Iñigo M. · Abeson, Enrico Jose F. · Dichosa, Eisen John Laurenz S. · Guariña, Jacob C. |
-| Instructor | Ms. Roxanne A. Pagaduan |
+| Instructor | Ms. Monaliza Gregorio |
 
 ---
 
